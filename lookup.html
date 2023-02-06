@@ -24,6 +24,7 @@
       source: function( request, response ) {
         $.ajax( {
           url: "https://lms-disco.api.brightspace.com/institutions?contains=ott",
+          dataType: "jsonp",
           data: {
             term: request.entries.properties.name
           },
