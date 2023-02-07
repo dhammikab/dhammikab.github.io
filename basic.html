@@ -34,10 +34,13 @@
       "Scala",
       "Scheme"
     ];
+    // source: availableTags
+    
     $( "#tags" ).autocomplete({
-      source: availableTags
+      source: 'https://lms-disco.api.brightspace.com/institutions?contains=ottawa'
     });
   } );
+    
   </script>
 </head>
 <body>
