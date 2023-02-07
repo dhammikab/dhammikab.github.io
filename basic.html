@@ -37,7 +37,19 @@
     // source: availableTags
     
     $( "#tags" ).autocomplete({
-      source: 'https://lms-disco.api.brightspace.com/institutions?contains=ottawa'
+
+      source: function(request,response) {  
+        $.ajax({  
+            url: 'https://lms-disco.api.brightspace.com/institutions',
+            type: "GET",  
+            dataType: "json",  
+            data: { term: request.contains },  
+            success: function (data) {  
+                response($.map(data, function (item) {  
+                    return { label: response.entities.properties.name, value: response.entities.properties.links.href };  
+                }))  
+            }  
+        }) 
     });
   } );
     
